@@ -1,5 +1,12 @@
+import { fetchTrecks, TrackCard } from "@/modules/track"
+
 export default async function Home() {
+  const tracks = await fetchTrecks(10)
   return (
-    <div>Hello World!</div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6">
+      {tracks.map((track) => (
+        <TrackCard key={track.id} track={track} />
+      ))}
+    </div>
   )
 }
