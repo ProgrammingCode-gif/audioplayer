@@ -1,17 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "@/styles/globals.css";
-import NavBar from "@/shared/layout/NavBar";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import NavBar from "@/widgets/navbar/ui/NavBar";
+import { Player } from "@/features/player";
 
 export const metadata: Metadata = {
   title: "Beatify",
@@ -26,10 +16,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`antialiased bg-neutral-800`}
       >
         <NavBar />
         {children}
+        <Player />
       </body>
     </html>
   );
