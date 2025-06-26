@@ -13,7 +13,15 @@ const TrackCard = ({ track }: TrackCardProps) => {
     const { setTrack, track: currentTrack } = useAudioStore()
 
     return (
-        <div onClick={() => {setTrack(track); console.log(track, "Current:", currentTrack)}}>{track.album_name}</div>
+        <div className=' rounded-md overflow-hidden w-44 flex items-center gap-4 border-b cursor-pointer hover:bg-gray-100'>
+            <div className="">
+                <img src={track.image} alt={track.name} className="w-full rounded-md" />
+                <div className="flex flex-col">
+                    <span className="font-bold">{track.name}</span>
+                    <span className="text-sm text-gray-500">{track.artist_name}</span>
+                </div>
+            </div>
+        </div>
     )
 }
 

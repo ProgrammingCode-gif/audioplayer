@@ -31,7 +31,7 @@ const Player = () => {
     return (
         <div className="">
             <button onClick={togglePlay}>Play</button>
-            <div className="">{track?.album_name}</div>
+            <div className="">{track?.name}</div>
             <audio ref={audioRef} preload="auto" />
         </div>
     )

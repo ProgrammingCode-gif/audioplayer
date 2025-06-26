@@ -1,6 +1,6 @@
 export type Track = {
     id: number;
-    title: string;
+    name: string;
     artist_name: string;
     album_name: string;
     duration: number; // in seconds
@@ -9,4 +9,5 @@ export type Track = {
     release_date: string; // ISO date format
     genre: string; // Genre of the track
     explicit: boolean; // Whether the track is explicit or not
+    image: string; // URL to the image
 }
