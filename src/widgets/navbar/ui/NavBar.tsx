@@ -8,7 +8,7 @@ import NavBarLink from "./NavBarLink";
 
 const NavBar = () => {
   return (
-    <nav className="bg-black text-neutral-100 pl-7 p-2 flex justify-between items-center">
+    <nav className="fixed top-0 left-0 w-full bg-black text-neutral-100 pl-7 p-2 flex justify-between items-center">
       <FaSpotify className="size-8" />
       <div className="flex items-center gap-4">
       <div className="absolute left-1/2 transform -translate-x-1/2 flex gap-3">
