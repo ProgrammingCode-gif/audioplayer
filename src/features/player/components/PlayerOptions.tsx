@@ -3,7 +3,6 @@ import { FaCirclePlay } from "react-icons/fa6";
 import { FaCirclePause } from "react-icons/fa6";
 import { BiSolidSkipNextCircle } from "react-icons/bi";
 import { BiSolidSkipPreviousCircle } from "react-icons/bi";
-import ProgressBar from "./ProgressBar";
 
 type Props = {
     togglePlay: () => void;

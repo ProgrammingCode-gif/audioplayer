@@ -8,6 +8,7 @@ import ProgressBar from './ProgressBar';
 const Player = () => {
     const audioRef = useRef<HTMLAudioElement | null>(null);
     const { track, isPlaying, switchPlay, progress, setProgress, progressTime, setProgressTime } = useAudioStore();
+    
     console.log("Current Track:", track, "Is Playing:", isPlaying);
     
     useEffect(() => {
@@ -53,7 +54,8 @@ const Player = () => {
                 <PlayerOptions togglePlay={togglePlay} track={track} isPlaying={isPlaying}/>
                 <ProgressBar 
                     audioRef={audioRef} 
-                    setProgress={setProgress} 
+                    setProgress={setProgress}
+                    setProgressTime={setProgressTime}
                     progress={progress} 
                     progressTime={progressTime} 
                     track={track} 
