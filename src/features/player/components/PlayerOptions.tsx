@@ -3,18 +3,17 @@ import { FaCirclePlay } from "react-icons/fa6";
 import { FaCirclePause } from "react-icons/fa6";
 import { BiSolidSkipNextCircle } from "react-icons/bi";
 import { BiSolidSkipPreviousCircle } from "react-icons/bi";
-import React from "react";
+import React, { useCallback } from "react";
 
 type Props = {
-    track: Track | null;
     isPlaying: boolean;
     switchPlay: () => void;
     audioRef: React.RefObject<HTMLAudioElement | null>;
 }
 
-const PlayerOptions = ({track, isPlaying, audioRef, switchPlay }: Props) => {
+const PlayerOptions = ({isPlaying, audioRef, switchPlay }: Props) => {
 
-    const togglePlay = () => {
+    const togglePlay = useCallback(() => {
         const audio = audioRef.current;
         if (!audio) return;
         if(isPlaying) {
@@ -23,7 +22,7 @@ const PlayerOptions = ({track, isPlaying, audioRef, switchPlay }: Props) => {
             audio.play();
         }
         switchPlay();
-    }
+    }, [isPlaying, audioRef, switchPlay]);
 
     return (
         <div className="flex jcenter items-center gap-2">
@@ -36,8 +35,8 @@ const PlayerOptions = ({track, isPlaying, audioRef, switchPlay }: Props) => {
                 className="p-2 rounded-full transition-colors duration-200 cursor-pointer"
             >
                 {isPlaying ?
-                    <FaCirclePause className="text-white text-2xl size-8 transition-all duration-150" /> :
-                    <FaCirclePlay className="text-white text-2xl size-8 transition-all duration-150" />
+                    <FaCirclePause className="text-white hover:text-neutral-200 text-2xl size-8 transition-all duration-150" /> :
+                    <FaCirclePlay className="text-white hover:text-neutral-200 text-2xl size-8 transition-all duration-150" />
                 }
             </button>
             <button>
