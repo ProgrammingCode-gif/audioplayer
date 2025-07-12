@@ -28,7 +28,7 @@ const Player = () => {
                     <p className='text-xs text-[#cbcbcb95]'>{track?.artist_name}</p>
                 </div>
             </div>
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center w">
                 <PlayerOptions switchPlay={switchPlay} audioRef={audioRef} isPlaying={isPlaying} />
                 <ProgressBar
                     audioRef={audioRef}
@@ -37,7 +37,6 @@ const Player = () => {
             </div>
             <SoundController />
             <audio ref={audioRef} preload="auto" />
-            <Bar />
         </div>
     )
 }

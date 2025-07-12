@@ -3,13 +3,23 @@ import React, { useEffect, useRef, useState } from 'react'
 type Props = {
     initialProgress?: number;
     onProgressChange?: (progress: number) => void;
-
+    widthClass?: string;
 }
 
-const Bar = ({initialProgress, onProgressChange}: Props) => {
+const Bar = ({
+        initialProgress = 0,
+        onProgressChange,
+        widthClass = 'w-3xs',
+    }: Props) => {
     const barRef = useRef<HTMLDivElement | null>(null);
     const [dragging, setDragging] = useState(false);
     const [progress, setProgress] = useState(initialProgress || 0);
+
+    useEffect(() => {
+        if(!dragging) {
+            setProgress(initialProgress || 0);
+        }
+    }, [dragging, initialProgress]);
 
     useEffect(() => {
         const barElement = barRef.current;
@@ -38,7 +48,7 @@ const Bar = ({initialProgress, onProgressChange}: Props) => {
             document.removeEventListener('mousemove', handleMouseMove);
             document.removeEventListener('mouseup', handleMouseUp);
         };
-    }, [barRef, dragging]);
+    }, [barRef, dragging, progress, onProgressChange]);
 
     const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
         if (barRef.current) {
@@ -59,17 +69,17 @@ const Bar = ({initialProgress, onProgressChange}: Props) => {
         <div
             ref={barRef}
             onClick={handleClick}
-            className="relative w-lg h-1 bg-neutral-700 rounded cursor-pointer select-none group"
+            className={`relative ${widthClass} h-1 bg-neutral-700 rounded cursor-pointer select-none group`}
         >
             <div
-                className="absolute top-0 left-0 h-full bg-[#f9e16a] rounded"
-                style={{ width: `${initialProgress && !dragging ? initialProgress : progress}%` }}
+                className={`absolute top-0 left-0 h-full bg-[#f9e16a] rounded`}
+                style={{ width: `${progress}%` }}
             />
 
             <div
                 onMouseDown={handleMouseDown}
-                className={`absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full shadow-lg ${dragging ? 'opacity-100' : 'opacity-0'} group-hover:opacity-100`}
-                style={{ left: `calc(${initialProgress && !dragging ? initialProgress : progress}% - 0.5rem)` }}
+                className={`absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full shadow-lg group-hover:opacity-100 ${dragging ? 'opacity-100' : 'opacity-0'}`}
+                style={{ left: `calc(${progress}% - 0.5rem)` }}
             />
         </div>
     )
