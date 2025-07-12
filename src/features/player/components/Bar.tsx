@@ -1,16 +1,18 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { memo, useCallback, useEffect, useRef, useState } from 'react'
 
 type Props = {
     initialProgress?: number;
     onProgressChange?: (progress: number) => void;
     widthClass?: string;
+    changeWhileDragging?: boolean;
 }
 
 const Bar = ({
         initialProgress = 0,
         onProgressChange,
         widthClass = 'w-3xs',
-    }: Props) => {
+        changeWhileDragging = false
+}: Props) => {
     const barRef = useRef<HTMLDivElement | null>(null);
     const [dragging, setDragging] = useState(false);
     const [progress, setProgress] = useState(initialProgress || 0);
@@ -21,26 +23,28 @@ const Bar = ({
         }
     }, [dragging, initialProgress]);
 
+    const handleMouseUp = useCallback((e: MouseEvent) => {
+        if (!barRef.current) return;
+        if (onProgressChange) {
+            onProgressChange(progress);
+        }
+        setDragging(false);
+    }, [barRef, onProgressChange, progress]);
+
+    const handleMouseMove = useCallback((e: MouseEvent) => {
+        if (dragging && barRef.current) {
+            const rect = barRef.current.getBoundingClientRect();
+            const percent = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1);
+            setProgress(percent * 100);
+        }
+        if(changeWhileDragging && dragging && onProgressChange) {
+            onProgressChange(progress);
+        }
+    }, [dragging, barRef, onProgressChange, progress, changeWhileDragging]);
+
     useEffect(() => {
         const barElement = barRef.current;
         if (!barElement) return;
-    
-        const handleMouseUp = (e: MouseEvent) => {
-            if (!barRef.current) return;
-            if (onProgressChange) {
-                onProgressChange(progress);
-            }
-            setDragging(false);
-        };
-    
-        const handleMouseMove = (e: MouseEvent) => {
-            if (dragging && barRef.current) {
-                const rect = barRef.current.getBoundingClientRect();
-                const percent = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1);
-                setProgress(percent * 100);
-            }
-        };
-
         document.addEventListener('mousemove', handleMouseMove);
         document.addEventListener('mouseup', handleMouseUp);
 
@@ -85,4 +89,4 @@ const Bar = ({
     )
 }
 
-export default Bar
+export default memo(Bar)

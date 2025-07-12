@@ -11,7 +11,7 @@ const SoundController = ({audioRef}: Props) => {
   return (
     <div className='flex items-center gap-5'>
       <button>
-        <BsFileMusicFill className="text-2xl text-neutral-200 hover:text-white transition-all duration-200 cursor-pointer" />
+        <BsFileMusicFill size={20} className="text-neutral-200 hover:text-white transition-all duration-200 cursor-pointer" />
       </button>
         <SoundBar audioRef={audioRef} />
     </div>

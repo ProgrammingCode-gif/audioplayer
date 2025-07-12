@@ -11,8 +11,8 @@ const SoundBar = ({audioRef}: Props) => {
 
   const handleVolumeChange = (newProgress: number) => {
     if (!audioRef.current) return;
-    audioRef.current.volume = newProgress / 100;
     setProgress(newProgress);
+    audioRef.current.volume = newProgress / 100;
   };
   
   useEffect(() => {
@@ -21,7 +21,6 @@ const SoundBar = ({audioRef}: Props) => {
 
     const onVolumeChange = () => {
       if (!audioRef.current) return;
-      audioRef.current.volume = progress / 100;
       setProgress(Math.round(audioRef.current.volume * 100));
     };
 
@@ -35,7 +34,7 @@ const SoundBar = ({audioRef}: Props) => {
   return (
     <div className="flex items-center gap-3">
         <IoVolumeMedium size={20}/>
-        <Bar initialProgress={progress} onProgressChange={handleVolumeChange} widthClass='w-24'/>
+        <Bar changeWhileDragging={true} initialProgress={progress} onProgressChange={handleVolumeChange} widthClass='w-24'/>
     </div>
   )
 }
