@@ -35,7 +35,7 @@ const Player = () => {
                     track={track}
                 />
             </div>
-            <SoundController />
+            <SoundController audioRef={audioRef}/>
             <audio ref={audioRef} preload="auto" />
         </div>
     )
