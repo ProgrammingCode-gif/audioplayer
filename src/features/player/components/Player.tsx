@@ -18,7 +18,7 @@ const Player = () => {
     }, [track])
 
     return (
-        <div className="fixed bottom-0 left-0 flex bg-black w-full justify-between items-center p-4 text-white z-50">
+        <div className=" flex bg-black w-full justify-between items-center p-4 text-white z-50">
             <div className="flex gap-2.5 items-center">
                 <img src={track?.image}
                     className="w-16 h-16 rounded-md object-cover"
