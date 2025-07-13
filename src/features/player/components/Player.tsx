@@ -18,7 +18,7 @@ const Player = () => {
     }, [track])
 
     return (
-        <div className=" flex bg-black w-full justify-between items-center p-4 text-white z-50">
+        <div className="relative flex bg-black w-full justify-between items-center p-4 text-white z-50">
             <div className="flex gap-2.5 items-center">
                 <img src={track?.image}
                     className="w-16 h-16 rounded-md object-cover"
@@ -28,7 +28,7 @@ const Player = () => {
                     <p className='text-xs text-[#cbcbcb95]'>{track?.artist_name}</p>
                 </div>
             </div>
-            <div className="flex flex-col items-center w">
+            <div className="absolute left-3/6 -translate-x-3/6 flex flex-col items-center w">
                 <PlayerOptions switchPlay={switchPlay} audioRef={audioRef} isPlaying={isPlaying} />
                 <ProgressBar
                     audioRef={audioRef}

@@ -4,6 +4,7 @@ import NavBar from "@/widgets/navbar/ui/NavBar";
 import { Player } from "@/features/player";
 import { Nunito } from "next/font/google";
 import { RightSideBar } from "@/features/rightSideBar";
+import { MainLayout } from "@/widgets/mainLayout";
 
 const nunito = Nunito({
   subsets: ["latin"],
@@ -25,24 +26,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${nunito.className} antialiased`}>
       <body
-        className={`antialiased bg-neutral-800 grid grid-rows-[auto_1fr_auto] h-dvh overflow-hidden`}
+        className={`antialiased bg-black grid grid-rows-[auto_1fr_auto] h-dvh overflow-hidden`}
       >
-        <header>
-          <NavBar />
-        </header>
-
-        <main className="grid grid-cols-[250px_1fr_300px] h-dvh overflow-hidden">
-          <aside className="bg-neutral-900 overflow-auto">
-
-          </aside>
-          <div className="overflow-auto bg-neutral-800">
-            {children}
-          </div>
-          <aside className="bg-neutral-900 overflow-auto">
-            <RightSideBar />
-          </aside>
-        </main>
-
+        <NavBar />
+        <MainLayout>{children}</MainLayout>
         <Player />
       </body>
     </html>

@@ -15,12 +15,13 @@ export async function jamendoFetch<T>( endpoint: string, params: Record<string, 
         url.searchParams.append(key, value.toString())
     })
 
-    const res = await fetch(url.toString())
+    const res = await fetch(url.toString())    
 
-    if(!res.ok) {
+    if(!res.ok) {        
         throw new Error(`API error: ${res.status}`)
     }
 
     const data = await res.json()
+    
     return data.results
 }
