@@ -5,7 +5,6 @@ import React, { useEffect, useRef } from 'react'
 import PlayerOptions from './PlayerOptions';
 import ProgressBar from './ProgressBar';
 import SoundController from './SoundController';
-import Bar from './Bar';
 
 const Player = () => {
     const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -35,7 +34,7 @@ const Player = () => {
                     track={track}
                 />
             </div>
-            <SoundController audioRef={audioRef}/>
+            <SoundController track={track} audioRef={audioRef}/>
             <audio ref={audioRef} preload="auto" />
         </div>
     )

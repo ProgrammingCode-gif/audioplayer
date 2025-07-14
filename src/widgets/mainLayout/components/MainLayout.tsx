@@ -17,7 +17,7 @@ const MainLayout = ({children}: Props) => {
                 {children}
             </div>
             {isOpen &&
-                <aside className="bg-[#101010] overflow-auto rounded-md">
+                <aside className="bg-[#101010] rounded-md overflow-hidden">
                     <RightSideBar />
                 </aside>
             }
