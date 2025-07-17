@@ -1,7 +1,7 @@
 "use client"
 
 import { useAudioStore } from '@/features/player'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import TrackInfo from './TrackInfo'
 import ArtistInfo from './ArtistInfo'
 import { fetchArtistIfo } from '../api/fetchArtistInfo'
@@ -10,7 +10,8 @@ import TopInfo from './TopInfo'
 
 const SideBar = () => {
     const { track } = useAudioStore()
-    const { setArtist, artist } = useRightSideBarStore()
+    const { setArtist, artist, close } = useRightSideBarStore()
+    const [ hovered, setHovered ] = useState<boolean>(false)
     const sideBarRef = useRef<HTMLDivElement | null>(null)
 
     useEffect(() => {
@@ -23,8 +24,12 @@ const SideBar = () => {
         fetchArtist()
     }, [track])
     return (
-        <div ref={sideBarRef} className='flex flex-col relative overflow-auto h-full scrollbar-hide group'>
-            <TopInfo sideBarRef={sideBarRef} track={track} />
+        <div
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+            ref={sideBarRef} 
+            className='flex flex-col relative overflow-auto h-full scrollbar-hide group'>
+            <TopInfo hovered={hovered} close={close} sideBarRef={sideBarRef} track={track} />
             <div className="px-4">
             <TrackInfo track={track} />
             <TrackInfo track={track} />

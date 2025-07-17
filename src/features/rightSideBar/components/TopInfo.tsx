@@ -1,15 +1,18 @@
 "use client"
 
 import { Track } from '@/shared/types'
+import { motion } from 'motion/react';
 import React, { useEffect, useState } from 'react'
 import { AiFillRightSquare } from "react-icons/ai";
 
 type Props = {
     track: Track | null
     sideBarRef: React.RefObject<HTMLDivElement | null>
+    hovered: boolean
+    close: () => void
 }
 
-const TopInfo = ({ track, sideBarRef }: Props) => {
+const TopInfo = ({ track, sideBarRef, hovered, close }: Props) => {
     const [scrolled, setScrolled] = useState(false)
 
     useEffect(() => {
@@ -33,10 +36,28 @@ const TopInfo = ({ track, sideBarRef }: Props) => {
 
     return (
         <div className={`py-5 px-4 bg-[#101010] flex items-center sticky top-0 left-0 w-full transition-shadow duration-200 ${scrolled ? "shadow-[#000000e1] shadow-lg/100" : ""}`}>
-            <button>
-                <AiFillRightSquare size={20} className='text-white hidden group-hover:block hover:text-[#f9e16a] transition-colors duration-200' />
-            </button>
-            <p className='text-white font-bold'>{track?.name}</p>
+                        
+            <motion.div
+                initial={{ width: 24 , opacity: 0, x: -20 }}
+                animate={{ width: 24, opacity: hovered ? 1 : 0, x: hovered ? 0 : -20 }}
+                transition={{ duration: 0.2 }}
+                className="overflow-hidden mr-2 flex items-center"
+            >
+                <button
+                onClick={close}
+                className="text-white hover:text-[#f9e16a] cursor-pointer">
+                    <AiFillRightSquare size={20} />
+                </button>
+            </motion.div>
+
+            <motion.p
+                animate={{ x: hovered ? 0 : -30 }}
+                transition={{ duration: 0.2 }}
+                className="text-white font-bold whitespace-nowrap overflow-hidden text-ellipsis"
+            >
+                {track?.name}
+            </motion.p>
+
         </div>
     )
 }
