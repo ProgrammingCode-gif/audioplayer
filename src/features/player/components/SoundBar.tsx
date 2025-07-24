@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import Bar from './Bar'
 import { IoVolumeMedium } from "react-icons/io5";
 
@@ -39,4 +39,4 @@ const SoundBar = ({audioRef}: Props) => {
   )
 }
 
-export default SoundBar
+export default memo(SoundBar)

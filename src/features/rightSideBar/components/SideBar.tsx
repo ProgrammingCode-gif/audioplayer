@@ -28,11 +28,9 @@ const SideBar = () => {
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
             ref={sideBarRef} 
-            className='flex flex-col relative overflow-auto h-full scrollbar-hide group'>
+            className='flex flex-col relative overflow-auto h-full scrollbar-hide group min-w-[250px]'>
             <TopInfo hovered={hovered} close={close} sideBarRef={sideBarRef} track={track} />
             <div className="px-4">
-            <TrackInfo track={track} />
-            <TrackInfo track={track} />
             <TrackInfo track={track} />
             <ArtistInfo artist={artist} />
             </div>

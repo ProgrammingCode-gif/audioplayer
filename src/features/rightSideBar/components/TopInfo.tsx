@@ -3,8 +3,7 @@
 import { Track } from '@/shared/types'
 import { motion } from 'motion/react';
 import React, { useEffect, useState } from 'react'
-import { AiFillRightSquare } from "react-icons/ai";
-
+import { TbArrowBarRight } from "react-icons/tb";
 type Props = {
     track: Track | null
     sideBarRef: React.RefObject<HTMLDivElement | null>
@@ -35,7 +34,7 @@ const TopInfo = ({ track, sideBarRef, hovered, close }: Props) => {
     }, [sideBarRef])
 
     return (
-        <div className={`py-5 px-4 bg-[#101010] flex items-center sticky top-0 left-0 w-full transition-shadow duration-200 ${scrolled ? "shadow-[#000000e1] shadow-lg/100" : ""}`}>
+        <div className={`py-5 px-4 bg-[#101010] flex items-center sticky top-0 left-0 w-full transition-shadow duration-200 ${scrolled ? "shadow-[#000000c6] shadow-lg/100" : ""}`}>
                         
             <motion.div
                 initial={{ width: 24 , opacity: 0, x: -20 }}
@@ -46,7 +45,7 @@ const TopInfo = ({ track, sideBarRef, hovered, close }: Props) => {
                 <button
                 onClick={close}
                 className="text-white hover:text-[#f9e16a] cursor-pointer">
-                    <AiFillRightSquare size={20} />
+                    <TbArrowBarRight size={20} />
                 </button>
             </motion.div>
 

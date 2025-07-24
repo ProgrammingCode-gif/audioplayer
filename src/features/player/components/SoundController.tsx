@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { memo } from 'react'
 import { BsFileMusicFill } from "react-icons/bs";
 import SoundBar from './SoundBar';
 import { useRightSideBarStore } from '@/features/rightSideBar';
@@ -22,4 +22,4 @@ const SoundController = ({audioRef, track}: Props) => {
   )
 }
 
-export default SoundController
+export default  memo(SoundController)

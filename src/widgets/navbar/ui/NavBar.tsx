@@ -13,7 +13,7 @@ const NavBar = () => {
         <FaSpotify className="size-8" />
         <div className="flex items-center gap-4">
           <div className="absolute left-1/2 transform -translate-x-1/2 flex gap-3">
-            <Link href="/" className="bg-neutral-800 p-2.5 rounded-full flex jcenter items-center hover:bg-[#2f2f2f] transition-colors duration-300">
+            <Link href="/" className="bg-[#1e1e1e] p-2.5 rounded-full flex jcenter items-center hover:bg-[#242424] transition-colors duration-300">
               <PiHouseFill className="size-6 text-white" />
             </Link>
             <SearchBar />

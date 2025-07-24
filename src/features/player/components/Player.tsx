@@ -1,7 +1,7 @@
 'use client'
 
 import { useAudioStore } from '../store/audioStore'
-import React, { useEffect, useRef } from 'react'
+import React, { memo, useEffect, useRef } from 'react'
 import PlayerOptions from './PlayerOptions';
 import ProgressBar from './ProgressBar';
 import SoundController from './SoundController';
@@ -9,6 +9,8 @@ import SoundController from './SoundController';
 const Player = () => {
     const audioRef = useRef<HTMLAudioElement | null>(null);
     const { track, isPlaying, switchPlay } = useAudioStore();
+    console.log("Player Rendered", track?.name);
+    
 
     useEffect(() => {
         if (!track || !audioRef.current) return;
@@ -40,4 +42,4 @@ const Player = () => {
     )
 }
 
-export default Player
+export default memo(Player)

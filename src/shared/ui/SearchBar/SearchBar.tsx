@@ -12,7 +12,7 @@ const SearchBar = () => {
 
     return (
         <div
-            className={`px-4.5 relative ${isActive ? 'ring-2 ring-white' : 'ring-transparent'}  w-md transition-all duration-300 rounded-full overflow-hidden flex items-center bg-neutral-800 text-gray-200 hover:bg-[#2f2f2f] focus-within:ring-2 focus-within:ring-white`}>
+            className={`px-4.5 relative ${isActive ? 'ring-2 ring-white' : 'ring-transparent'}  w-md transition-all duration-300 rounded-full overflow-hidden flex items-center bg-[#1e1e1e] text-gray-200 hover:bg-[#242424] focus-within:ring-2 focus-within:ring-white`}>
             <FiSearch className='size-6 text-neutral-400' />
             <input
                 onBlur={() => setIsActive(false)}

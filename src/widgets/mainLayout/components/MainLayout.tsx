@@ -1,6 +1,7 @@
 "use client"
 import { RightSideBar, useRightSideBarStore } from '@/features/rightSideBar'
-import React from 'react'
+import { AnimatePresence, motion } from 'motion/react'
+import React, { memo } from 'react'
 
 type Props = {
     children: React.ReactNode;
@@ -8,21 +9,31 @@ type Props = {
 
 const MainLayout = ({children}: Props) => {
     const { isOpen } = useRightSideBarStore();
-    return (
-        <main className={`grid ${isOpen ? "grid-cols-[250px_1fr_280px]" : "grid-cols-[250px_1fr]"} h-full overflow-hidden gap-3 px-2.5`}>
-            <aside className="bg-[#101010] overflow-auto rounded-md">
 
+    return (
+        <main className="flex h-full overflow-hidden gap-3 px-2.5">
+            <aside className="bg-[#101010] w-[250px] overflow-auto rounded-md">
             </aside>
-            <div className="overflow-auto bg-[#101010] rounded-md scrollbar-hide">
+
+            <div className="flex-1 overflow-auto bg-[#101010] rounded-md scrollbar-hide">
                 {children}
             </div>
-            {isOpen &&
-                <aside className="bg-[#101010] rounded-md overflow-hidden">
-                    <RightSideBar />
-                </aside>
-            }
+
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.aside
+                        initial={{ width: 0, opacity: 0 }}
+                        animate={{ width: 280, opacity: 1 }}
+                        exit={{ width: 0, opacity: 0 }}
+                        transition={{ duration: 0.15 }}
+                        className="bg-[#101010] rounded-md overflow-hidden"
+                    >
+                        <RightSideBar />
+                    </motion.aside>
+                )}
+            </AnimatePresence>
         </main>
-    )
+    );
 }
 
-export default MainLayout
+export default memo(MainLayout)
