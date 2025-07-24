@@ -1,7 +1,7 @@
 "use client"
 
 import { useAudioStore } from '@/features/player'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { memo, useEffect, useRef, useState } from 'react'
 import TrackInfo from './TrackInfo'
 import ArtistInfo from './ArtistInfo'
 import { fetchArtistIfo } from '../api/fetchArtistInfo'
@@ -17,6 +17,7 @@ const SideBar = () => {
     useEffect(() => {
         const fetchArtist = async () => {
             if (track && track.artist_id) {
+                
                 const artist = await fetchArtistIfo(track.artist_id)
                 setArtist(artist)
             }
@@ -30,7 +31,7 @@ const SideBar = () => {
             ref={sideBarRef} 
             className='flex flex-col relative overflow-auto h-full scrollbar-hide group min-w-[250px]'>
             <TopInfo hovered={hovered} close={close} sideBarRef={sideBarRef} track={track} />
-            <div className="px-4">
+            <div className="px-4 mb-4">
             <TrackInfo track={track} />
             <ArtistInfo artist={artist} />
             </div>

@@ -1,5 +1,5 @@
 import { Track } from '@/shared/types'
-import React from 'react'
+import React, { memo } from 'react'
 
 type Props = {
     track: Track | null
@@ -17,4 +17,4 @@ const TrackInfo = ({track} : Props) => {
   )
 }
 
-export default TrackInfo
+export default memo(TrackInfo)

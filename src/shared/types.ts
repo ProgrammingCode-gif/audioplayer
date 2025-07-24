@@ -20,16 +20,16 @@ export type Artist = {
     image: string;
     musicinfo: {
         tags: string[];
+        description: {
+            en: string
+            fr: string
+            es: string
+            de: string
+            pl: string
+            it: string
+            ru: string
+            pt: string
+            ja: string
+        }
     };
-    description: {
-        en: string
-        fr: string
-        es: string
-        de: string
-        pl: string
-        it: string
-        ru: string
-        pt: string
-        ja: string
-    }
 }
