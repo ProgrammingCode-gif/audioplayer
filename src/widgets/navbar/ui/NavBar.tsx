@@ -4,7 +4,7 @@ import Link from "next/link"
 import SearchBar from "../../../shared/ui/SearchBar/SearchBar"
 import { PiHouseFill } from "react-icons/pi";
 import { FaSpotify } from "react-icons/fa";
-import NavBarLink from "./NavBarLink";
+import { AuthBtns } from "@/features/auth";
 
 const NavBar = () => {
   return (
@@ -20,10 +20,7 @@ const NavBar = () => {
           </div>
         </div>
         <div className="flex items-center gap-4 ">
-          <NavBarLink path="/signup" text="Зарегистрироваться" />
-          <Link href="/login" className="bg-white text-black px-8 py-3 rounded-full flex jcenter items-center hover:scale-105 hover:bg-[#e9e9e9] transition-all duration-100 font-bold">
-            Войти
-          </Link>
+          <AuthBtns />
         </div>
       </nav>
     </header>
