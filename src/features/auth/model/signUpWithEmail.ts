@@ -16,12 +16,7 @@ export const signUpWithEmail = async (email: string, password: string): Promise<
     }
     const user = data.user;
     if (user) {
-        setUser({
-            id: user.id,
-            name: user.user_metadata.full_name || '',
-            email: user.email || '',
-            avatarUrl: user.user_metadata.avatar_url || ''
-        });
+        setUser(user);
     }
     setLoading(false);
     return null;

@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { User } from "../types/userType";
+import { supabase } from "@/lib/supabase/supabaseClient";
 
 type UserStore = {
     user: User | null;
@@ -7,6 +8,7 @@ type UserStore = {
     setUser: (user: User | null) => void;
     clearUser: () => void;
     setLoading: (loading: boolean) => void;
+    initUser: () => Promise<void>
 };
 
 
@@ -15,5 +17,10 @@ export const useUserStore = create<UserStore>((set) => ({
     isLoading: false,
     setUser: (user) => set({user}),
     clearUser: () => set({ user: null }),
-    setLoading: (loading) => set({ isLoading: loading})
+    setLoading: (loading) => set({ isLoading: loading}),
+    initUser: async () => {
+        set({ isLoading: true });
+        const {data} = await supabase.auth.getSession()
+        set({user: data.session?.user ?? null, isLoading: false});
+    }
 }))

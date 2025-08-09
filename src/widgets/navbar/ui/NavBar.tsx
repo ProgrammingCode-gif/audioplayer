@@ -4,8 +4,8 @@ import Link from "next/link"
 import SearchBar from "../../../shared/ui/SearchBar/SearchBar"
 import { PiHouseFill } from "react-icons/pi";
 import { FaSpotify } from "react-icons/fa";
-import NavBarLink from "./NavBarLink";
-import { useUserStore } from "@/entities/user/model/store";
+  import { useUserStore } from "@/entities/user/model/store";
+import { logOut } from "@/features/auth/model/logOut";
 
 const NavBar = () => {
   const { user } = useUserStore();
@@ -22,7 +22,7 @@ const NavBar = () => {
           </div>
         </div>
           {user ?
-          <div className="">{user.email}</div> :
+          <div onClick={logOut} className="">{user.email}</div> :
         <div className="flex items-center gap-4 ">
           <Link href="/signup" className="text-neutral-500 text-sm font-bold hover:text-white hover:scale-105 transition-all duration-150">
             Зарегистрироваться

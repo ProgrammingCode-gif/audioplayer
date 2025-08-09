@@ -3,11 +3,10 @@
 import { useUserStore } from '@/entities/user/model/store'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
-import { signUpWithEmail } from '../model/SignUpWithEmail'
+import { signUpWithEmail } from '../model/signUpWithEmail'
 
 const SignUpForm = () => {
     const router = useRouter()
-    const { user } = useUserStore()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { Nunito } from "next/font/google";
+import UserInit from "./_providers/UserInit";
 
 const nunito = Nunito({
   subsets: ["latin"],
@@ -24,6 +25,7 @@ export default function RootLayout({
       <body
         className={`antialiased bg-black`}
       >
+        <UserInit />
         {children}
       </body>
     </html>
