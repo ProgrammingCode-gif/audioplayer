@@ -9,11 +9,14 @@ const LoginForm = () => {
   const { user } = useUserStore()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState<string | null>(null)
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const res = await loginWithEmail(email, password)
-    if (res) {
-      console.error("Login error:", res);
+    const errorMessage = await loginWithEmail(email, password)
+    if (errorMessage) {
+      console.log("Login error:", errorMessage);
+      setError(errorMessage || "An error occurred during login");
     } else {
       console.log("Login successful");
       router.push('/')
@@ -33,6 +36,7 @@ const LoginForm = () => {
           <input onChange={(e) => setPassword(e.target.value)} type="password" id="password" name="password" required />
         </div>
         <button type="submit">Login</button>
+        {error && <div className="text-red-500">{error}</div>}
       </form>
     </div>
   )

@@ -8,9 +8,7 @@ import SoundController from './SoundController';
 
 const Player = () => {
     const audioRef = useRef<HTMLAudioElement | null>(null);
-    const { track, isPlaying, switchPlay } = useAudioStore();
-    console.log("Player Rendered", track?.name);
-    
+    const { track, isPlaying, switchPlay } = useAudioStore();    
 
     useEffect(() => {
         if (!track || !audioRef.current) return;

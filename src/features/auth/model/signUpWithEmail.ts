@@ -6,18 +6,29 @@ export const signUpWithEmail = async (email: string, password: string): Promise<
     const setLoading = useUserStore.getState().setLoading;
     setLoading(true);
     const { data, error } = await supabase.auth.signUp({
-        email,
-        password
+        email: email.toLowerCase().trim(),
+        password: password.trim(),
     });
     if (error) {
-        console.error("Sign up failed:", error.message);
+        console.log("Sign up failed:", error.message);
+
         setLoading(false);
         return error.message;
     }
-    const user = data.user;
-    if (user) {
-        setUser(user);
+
+    if (data.user?.identities && data.user.identities.length > 0) {
+        if (!data.user) {
+            return "Проверьте почту для подтверждения регистрации";
+        }
+        // const user = data.user;
+        // if (user) {
+        //     console.log(data);        
+        //     setUser(user);
+        // }
+        setLoading(false);
+        return null;
+    } else {
+        return "Пользователь с таким email уже зарегистрирован";
     }
-    setLoading(false);
-    return null;
+
 }

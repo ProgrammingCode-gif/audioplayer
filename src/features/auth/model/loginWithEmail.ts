@@ -9,7 +9,7 @@ export const loginWithEmail = async (email: string, password: string): Promise<s
     const { data, error } = await supabase.auth.signInWithPassword({email, password})
 
     if (error) {
-        console.error("Login failed:", error.message);
+        console.log("Login failed:", error.message);
         setLoading(false);
         return error.message;
     }

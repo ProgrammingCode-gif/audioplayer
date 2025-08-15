@@ -6,24 +6,32 @@ import React, { useState } from 'react'
 import { signUpWithEmail } from '../model/signUpWithEmail'
 
 const SignUpForm = () => {
+    const { user } = useUserStore()
     const router = useRouter()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [error, setError] = useState<string | null>(null)
+    const [successMessage, setSuccessMessage] = useState<string | null>(null)
+    
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        const res = await signUpWithEmail(email, password)
-        if (res) {
-            console.error("Login error:", res);
+        const errorMessage = await signUpWithEmail(email, password)
+        if (errorMessage) {
+            console.log("Login error:", errorMessage);
+            setError(errorMessage || "An error occurred during login");
         } else {
-            console.log("Login successful");
-            router.push('/')
+            setEmail('')
+            setPassword('')
+            console.log("SignUp successful");
+            setSuccessMessage("Проверьте почту для подтверждения регистрации")
         }
     }
     return (
         <div>
-            
-            <h2>Login Form</h2>
+            {successMessage ? <div className="text-green-500">{successMessage} Подтвердите свою почту</div> : 
+            <>
+            <h2>Register Form</h2>
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 <div>
                     <label htmlFor="username">Email:</label>
@@ -33,8 +41,12 @@ const SignUpForm = () => {
                     <label htmlFor="password">Password:</label>
                     <input onChange={(e) => setPassword(e.target.value)} type="password" id="password" name="password" required />
                 </div>
+                {successMessage && <div className="text-green-500">{successMessage}</div>}
                 <button type="submit">Login</button>
+                {error && <div className="text-red-500">{error}</div>}
             </form>
+            </>
+            }
         </div>
     )
 }

@@ -6,6 +6,7 @@ import { PiHouseFill } from "react-icons/pi";
 import { FaSpotify } from "react-icons/fa";
   import { useUserStore } from "@/entities/user/model/store";
 import { logOut } from "@/features/auth/model/logOut";
+import AccountMenu from "./AccountMenu";
 
 const NavBar = () => {
   const { user } = useUserStore();
@@ -22,7 +23,7 @@ const NavBar = () => {
           </div>
         </div>
           {user ?
-          <div onClick={logOut} className="">{user.email}</div> :
+          <AccountMenu user={user} />:
         <div className="flex items-center gap-4 ">
           <Link href="/signup" className="text-neutral-500 text-sm font-bold hover:text-white hover:scale-105 transition-all duration-150">
             Зарегистрироваться

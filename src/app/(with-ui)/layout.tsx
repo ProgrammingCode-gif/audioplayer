@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
-import NavBar from "@/widgets/navbar/ui/NavBar";
+import NavBar from "@/widgets/navbar/components/NavBar";
 import { Player } from "@/features/player";
 import { Nunito } from "next/font/google";
 import { RightSideBar } from "@/features/rightSideBar";
