@@ -1,7 +1,7 @@
 import { useUserStore } from "@/entities/user/model/store";
 import { supabase } from "@/lib/supabase/supabaseClient";
 
-export const signUpWithEmail = async (email: string, password: string): Promise<string | null> => {
+export const signUpWithEmail = async (email: string, password: string, username?: string): Promise<string | null> => {
     const setUser = useUserStore.getState().setUser;
     const setLoading = useUserStore.getState().setLoading;
     setLoading(true);
@@ -20,11 +20,7 @@ export const signUpWithEmail = async (email: string, password: string): Promise<
         if (!data.user) {
             return "Проверьте почту для подтверждения регистрации";
         }
-        // const user = data.user;
-        // if (user) {
-        //     console.log(data);        
-        //     setUser(user);
-        // }
+
         setLoading(false);
         return null;
     } else {

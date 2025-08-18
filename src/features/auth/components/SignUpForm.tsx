@@ -1,14 +1,11 @@
 "use client"
 
-import { useUserStore } from '@/entities/user/model/store'
-import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 import { signUpWithEmail } from '../model/signUpWithEmail'
 
 const SignUpForm = () => {
-    const { user } = useUserStore()
-    const router = useRouter()
     const [email, setEmail] = useState('')
+    const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState<string | null>(null)
     const [successMessage, setSuccessMessage] = useState<string | null>(null)
@@ -16,7 +13,7 @@ const SignUpForm = () => {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        const errorMessage = await signUpWithEmail(email, password)
+        const errorMessage = await signUpWithEmail(email, password, username)
         if (errorMessage) {
             console.log("Login error:", errorMessage);
             setError(errorMessage || "An error occurred during login");
@@ -34,8 +31,12 @@ const SignUpForm = () => {
             <h2>Register Form</h2>
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 <div>
-                    <label htmlFor="username">Email:</label>
-                    <input onChange={(e) => setEmail(e.target.value)} type="text" id="username" name="username" required />
+                    <label htmlFor="email">Email:</label>
+                    <input onChange={(e) => setEmail(e.target.value)} type="text" id="email" name="email" required />
+                </div>
+                <div>
+                    <label htmlFor="username">Username:</label>
+                    <input onChange={(e) => setUsername(e.target.value)} type="text" id="username" name="username" required />
                 </div>
                 <div>
                     <label htmlFor="password">Password:</label>
