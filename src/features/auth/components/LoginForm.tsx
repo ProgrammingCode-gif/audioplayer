@@ -1,6 +1,7 @@
 "use client"
 import { useState } from 'react'
 import { loginWithEmail } from '../model/loginWithEmail'
+import { loginWithOAuth } from '../model/loginWithOAuth'
 import { useUserStore } from '@/entities/user/model/store'
 import { useRouter } from 'next/navigation'
 
@@ -41,8 +42,8 @@ const LoginForm = () => {
       </div>
 
       <div className="flex flex-col gap-2 mb-6 after:content-[''] after:w-full after:h-[1px] after:bg-[#686868d4] after:mt-2 after:mb-2 after:rounded-2xl">
-        <SocialMediaBtn icon={<FcGoogle size={25}/>} text='Войти через Google' />
-        <SocialMediaBtn icon={<FaFacebook size={25} color='#1877F2' />} text='Войти через Facebook' />
+        <SocialMediaBtn onClick={() => loginWithOAuth("google")} icon={<FcGoogle size={25}/>} text='Войти через Google' />
+        <SocialMediaBtn onClick={() => loginWithOAuth("facebook")} icon={<FaFacebook size={25} color='#1877F2' />} text='Войти через Facebook' />
         <SocialMediaBtn icon={<FaApple size={25} color='#FFFFFF' />} text='Войти через Apple' />
       </div>
 

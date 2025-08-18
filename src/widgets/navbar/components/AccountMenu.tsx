@@ -16,7 +16,7 @@ type Props = {
 const AccountMenu = ({user}: Props) => {  
   return (
       <div className='relative flex h-full items-center gap-5 group'>
-        <p>{user.username}</p>
+        <p>{user.username || user.user_metadata.full_name}</p>
         <img className='rounded-full w-10'
         src={user?.avatarUrl ? user.avatarUrl : 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png'} alt="" />
         <div className="overflow-hidden absolute -bottom-2 -mr-4 transform translate-y-full right-0 bg-neutral-800 ring-1 ring-neutral-600 rounded-sm w-36 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out shadow-lg">

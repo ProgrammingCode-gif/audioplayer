@@ -1,16 +1,16 @@
 import React from 'react'
 
 type Props = {
-    // callback: () => void;
+    onClick?: () => void;
     text?: string;
     icon: React.ReactNode;
 }
 
-const SocialMediaBtn = ({ text, icon}: Props) => {
+const SocialMediaBtn = ({ text, icon, onClick }: Props) => {
     console.log(!!text);
     
   return (
-    <button className={`cursor-pointer w-full flex items-center ${!text ? 'justify-center py-4 px-2' : 'py-3 px-4'} gap-2 bg-[#1a1a1a] text-white rounded-md hover:bg-[#333] transition-colors duration-200`}>
+    <button onClick={onClick} className={`cursor-pointer w-full flex items-center ${!text ? 'justify-center py-4 px-2' : 'py-3 px-4'} gap-2 bg-[#1a1a1a] text-white rounded-md hover:bg-[#333] transition-colors duration-200`}>
         <div className={text ? '' : 'flex items-center justify-center text-center'}>
             {icon}
         </div>
