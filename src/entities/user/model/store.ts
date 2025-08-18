@@ -21,6 +21,12 @@ export const useUserStore = create<UserStore>((set) => ({
     initUser: async () => {
         set({ isLoading: true });
         const {data} = await supabase.auth.getSession()
-        set({user: data.session?.user ?? null, isLoading: false});
+        const { data: userData} = await supabase.from('profiles').select("avatar_url, username").eq('id', data.session?.user.id).single();
+        
+        if (userData && data.session?.user) {
+            set({ user: {...data.session?.user, avatarUrl: userData.avatar_url, username: userData.username}, isLoading: false });
+        } else {
+            set({user: null, isLoading: false});
+        }
     }
 }))

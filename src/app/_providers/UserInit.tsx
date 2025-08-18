@@ -1,6 +1,7 @@
 "use client"
 import { useUserStore } from '@/entities/user/model/store'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
+
 
 const UserInit = () => {
     const initUser = useUserStore((state) => state.initUser)

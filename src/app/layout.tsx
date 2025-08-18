@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { Nunito } from "next/font/google";
 import UserInit from "./_providers/UserInit";
+import NextTopLoader from "nextjs-toploader";
+
 
 const nunito = Nunito({
   subsets: ["latin"],
@@ -25,6 +27,12 @@ export default function RootLayout({
       <body
         className={`antialiased bg-black`}
       >
+        <NextTopLoader
+          color="#29D"
+          height={2}
+          showSpinner={false}
+          speed={300}
+        />
         <UserInit />
         {children}
       </body>

@@ -16,16 +16,9 @@ export const loginWithEmail = async (email: string, password: string): Promise<s
     const user = data.user;
 
     if (user) {
-        const {data: userData, error} = await supabase.from('profiles').select("*")
-
-        console.log(user.id);
-        console.log(error);
+        const {data: userData} = await supabase.from('profiles').select("avatar_url, username").eq('id', user.id).single();        
         
-        console.log("userData", userData);
-        
-        
-        
-        setUser({...user});
+        setUser({...user, avatarUrl: userData?.avatar_url, username: userData?.username ?? null});
     }
 
     setLoading(false);
