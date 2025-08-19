@@ -11,6 +11,7 @@ import { FaGithub } from "react-icons/fa";
 
 import FormInput from '@/shared/ui/FormInput/FormInput';
 import SocialMediaBtn from '@/shared/ui/SocialMediaBtn/SocialMediaBtn';
+import { loginWithOAuth } from '../model/loginWithOAuth';
 
 const SignUpForm = () => {
     const { isLoading } = useUserStore()
@@ -43,8 +44,8 @@ const SignUpForm = () => {
                         <h2 className='text-3xl font-bold'>Регистрация в <span className='text-[#f2d670]'>Beatify</span></h2>
                     </div>
                     <div className="flex gap-2 mb-3">
-                        <SocialMediaBtn icon={<FcGoogle size={25} />} />
-                        <SocialMediaBtn icon={<FaGithub size={25} color='#FFFFFF' />} />
+                        <SocialMediaBtn onClick={() => loginWithOAuth("google")} icon={<FcGoogle size={25} />} />
+                        <SocialMediaBtn onClick={() => loginWithOAuth("github")} icon={<FaGithub size={25} color='#FFFFFF' />} />
                     </div>
                     <form onSubmit={handleSubmit} className="flex flex-col gap-4 after:content-[''] before:w-full before:h-[1px] before:bg-[#686868d4] before:mt-2 before:mb-2 before:rounded-2xl">
                         <div className='flex flex-col gap-2'>

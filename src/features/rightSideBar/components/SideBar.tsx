@@ -16,6 +16,7 @@ const SideBar = () => {
 
     useEffect(() => {
         const fetchArtist = async () => {
+            setArtist(null)
             if (track && track.artist_id) {
                 
                 const artist = await fetchArtistIfo(track.artist_id)
@@ -23,6 +24,10 @@ const SideBar = () => {
             }
         }
         fetchArtist()
+
+        return () => {
+            setArtist(null)
+        }
     }, [track])
     return (
         <div
