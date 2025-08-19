@@ -7,7 +7,7 @@ import { useUserStore } from '@/entities/user/model/store'
 import { FaSpotify } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
-import { FaApple } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 
 import FormInput from '@/shared/ui/FormInput/FormInput';
 import SocialMediaBtn from '@/shared/ui/SocialMediaBtn/SocialMediaBtn';
@@ -44,8 +44,7 @@ const SignUpForm = () => {
                     </div>
                     <div className="flex gap-2 mb-3">
                         <SocialMediaBtn icon={<FcGoogle size={25} />} />
-                        <SocialMediaBtn icon={<FaFacebook size={25} color='#1877F2' />} />
-                        <SocialMediaBtn icon={<FaApple size={25} color='#FFFFFF' />} />
+                        <SocialMediaBtn icon={<FaGithub size={25} color='#FFFFFF' />} />
                     </div>
                     <form onSubmit={handleSubmit} className="flex flex-col gap-4 after:content-[''] before:w-full before:h-[1px] before:bg-[#686868d4] before:mt-2 before:mb-2 before:rounded-2xl">
                         <div className='flex flex-col gap-2'>

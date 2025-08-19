@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation'
 import { FaSpotify } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
-import { FaApple } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 
 import SocialMediaBtn from '@/shared/ui/SocialMediaBtn/SocialMediaBtn'
 import FormInput from '@/shared/ui/FormInput/FormInput'
@@ -43,8 +43,7 @@ const LoginForm = () => {
 
       <div className="flex flex-col gap-2 mb-6 after:content-[''] after:w-full after:h-[1px] after:bg-[#686868d4] after:mt-2 after:mb-2 after:rounded-2xl">
         <SocialMediaBtn onClick={() => loginWithOAuth("google")} icon={<FcGoogle size={25}/>} text='Войти через Google' />
-        <SocialMediaBtn onClick={() => loginWithOAuth("facebook")} icon={<FaFacebook size={25} color='#1877F2' />} text='Войти через Facebook' />
-        <SocialMediaBtn icon={<FaApple size={25} color='#FFFFFF' />} text='Войти через Apple' />
+        <SocialMediaBtn onClick={() => loginWithOAuth("github")} icon={<FaGithub size={25} color='#FFFFFF' />} text='Войти через GitHub' />
       </div>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">

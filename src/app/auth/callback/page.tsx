@@ -15,7 +15,10 @@ const AuthCallback = () => {
       const { data: { user } } = await supabase.auth.getUser()
       console.log(user);
       
-      if(!user) return
+      if(!user) {
+        router.push("/login")
+        return
+      }
 
       const {data: profile} = await supabase.from("profiles").select("username, avatar_url").eq("id", user.id).single()
       if (profile && profile.username) {
@@ -24,6 +27,7 @@ const AuthCallback = () => {
           username: profile.username,
           avatarUrl: profile.avatar_url
         })
+        router.push("/")
       } else {
         const username = user.user_metadata?.full_name || user.email?.split('@')[0] || 'Пользователь'
         const avatarUrl = user.user_metadata?.avatar_url || null
