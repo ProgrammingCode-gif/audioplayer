@@ -19,7 +19,7 @@ const TracksSlider = ({tracks}: Props) => {
             className='w-full h-full flex group'
         >
             {tracks.map((track) => (
-                <SwiperSlide className='!w-44 flex justify-center items-center' key={track.id}>
+                <SwiperSlide className='!w-44 flex justify-center items-center first-of-type:ml-8 last-of-type:mr-8' key={track.id}>
                     <TrackCard 
                         key={track.id}
                         track={track} 
