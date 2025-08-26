@@ -1,5 +1,5 @@
 "use client"
-import { User } from '@/entities/user/types/userType'
+import { User } from '@/entities/user/model/types'
 import { logOut } from '@/features/auth/model/logOut'
 import React, { useEffect, useState } from 'react'
 

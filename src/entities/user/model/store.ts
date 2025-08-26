@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { User } from "../types/userType";
+import { User } from "./types";
 import { supabase } from "@/lib/supabase/supabaseClient";
 
 type UserStore = {
