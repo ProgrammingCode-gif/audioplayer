@@ -23,24 +23,25 @@ const Bar = ({
         }
     }, [dragging, initialProgress]);
 
-    const handleMouseUp = useCallback((e: MouseEvent) => {
-        if (!barRef.current) return;
-        if (onProgressChange) {
+    const handleMouseUp = useCallback(() => {
+        if (dragging && onProgressChange) {
             onProgressChange(progress);
         }
         setDragging(false);
-    }, [barRef, onProgressChange, progress]);
+    }, [dragging, onProgressChange, progress]);
 
     const handleMouseMove = useCallback((e: MouseEvent) => {
         if (dragging && barRef.current) {
             const rect = barRef.current.getBoundingClientRect();
             const percent = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1);
-            setProgress(percent * 100);
+            const newProgress = percent * 100;
+            setProgress(newProgress);
+    
+            if (changeWhileDragging && onProgressChange) {
+                onProgressChange(newProgress);
+            }
         }
-        if(changeWhileDragging && dragging && onProgressChange) {
-            onProgressChange(progress);
-        }
-    }, [dragging, barRef, onProgressChange, progress, changeWhileDragging]);
+    }, [dragging, changeWhileDragging, onProgressChange]);
 
     useEffect(() => {
         const barElement = barRef.current;

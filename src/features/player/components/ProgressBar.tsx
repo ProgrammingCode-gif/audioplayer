@@ -40,6 +40,7 @@ const ProgressBar = ({ track, audioRef }: Props) => {
                 setProgress(percentage);
             }
         };
+        
         audio.addEventListener('timeupdate', handleTimeUpdate);
 
         return () => {
