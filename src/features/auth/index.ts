@@ -1,1 +1,2 @@
-export {default as AuthBtns} from "./components/AuthBtns";
+export {default as LoginForm} from './components/LoginForm'
+export {default as SignUpForm} from './components/SignUpForm'
