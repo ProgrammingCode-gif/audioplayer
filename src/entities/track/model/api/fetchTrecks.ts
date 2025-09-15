@@ -1,5 +1,5 @@
-import { Track } from '../../../../shared/types'
 import { jamendoFetch } from "@/lib/jamedo/client";
+import { Track } from "../types";
 
 export async function fetchTrecks(limit: number = 10): Promise<Track[]> {
     const endpoint = 'tracks'

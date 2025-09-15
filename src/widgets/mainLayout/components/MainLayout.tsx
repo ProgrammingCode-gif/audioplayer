@@ -1,5 +1,5 @@
 "use client"
-import { RightSideBar, useRightSideBarStore } from '@/features/rightSideBar'
+import { RightSideBar, useRightSideBarStore } from '@/widgets/rightSideBar'
 import { AnimatePresence, motion } from 'motion/react'
 import React, { memo } from 'react'
 

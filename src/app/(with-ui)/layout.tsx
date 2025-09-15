@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
-import NavBar from "@/widgets/navbar/components/NavBar";
+import NavBar from "@/widgets/navbar/components/NavBarComponent";
 import { Player } from "@/features/player";
 import { MainLayout } from "@/widgets/mainLayout";
 

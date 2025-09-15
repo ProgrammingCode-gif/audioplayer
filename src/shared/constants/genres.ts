@@ -1,4 +1,6 @@
-export const GENRES = [
+import { Genre } from "../types";
+
+export const GENRES: Genre[] = [
     { name: 'Pop', value: 'pop', image: '/images/genres/pop.jpg' },
     { name: 'Rock', value: 'rock', image: '/images/genres/rock.jpg' },
     { name: 'Hip-Hop', value: 'hiphop', image: '/images/genres/hiphop.jpg' },

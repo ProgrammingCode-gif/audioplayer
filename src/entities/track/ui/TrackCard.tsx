@@ -1,11 +1,11 @@
 'use client'
 
 import React from 'react'
-import { Track } from '@/shared/types'
 import { useAudioStore } from '@/features/player/store/audioStore'
+import { Track } from '../model/types'
 
 type TrackCardProps = {
-    track: Track
+    track: Track;
 }
 
 const TrackCard = ({ track }: TrackCardProps) => {

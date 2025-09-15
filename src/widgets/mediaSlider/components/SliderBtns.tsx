@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useSwiper } from 'swiper/react';
 import { GrNext } from "react-icons/gr";
 import { GrPrevious } from "react-icons/gr";

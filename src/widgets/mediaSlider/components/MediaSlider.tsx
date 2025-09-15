@@ -1,24 +1,24 @@
 "use client"
-import React, { useEffect } from 'react'
-import {Swiper, SwiperSlide, useSwiper } from 'swiper/react'
+import React from 'react'
+import {Swiper, SwiperSlide } from 'swiper/react'
 
 import 'swiper/css';
-import { Track } from '@/shared/types';
-import TrackCard from './TrackCard';
+import { Genre } from '@/shared/types';
+import { Track, TrackCard } from '@/entities/track';
 import SliderBtns from './SliderBtns';
 
 type Props = {
-    tracks: Track[]
+    tracks?: Track[]
 }
 
-const TracksSlider = ({tracks}: Props) => {
+const MediaSlider = ({tracks}: Props) => {
   return (
       <div className="relative">
         <Swiper
             slidesPerView="auto"
             className='w-full h-full flex group'
         >
-            {tracks.map((track) => (
+            { tracks && tracks.map((track) => (
                 <SwiperSlide className='!w-44 flex justify-center items-center first-of-type:ml-8 last-of-type:mr-8' key={track.id}>
                     <TrackCard 
                         key={track.id}
@@ -32,4 +32,4 @@ const TracksSlider = ({tracks}: Props) => {
   )
 }
 
-export default TracksSlider
+export default MediaSlider

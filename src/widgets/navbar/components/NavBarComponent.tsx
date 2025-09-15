@@ -8,7 +8,7 @@ import { FaSpotify } from "react-icons/fa";
 import { logOut } from "@/features/auth/model/logOut";
 import AccountMenu from "./AccountMenu";
 
-const NavBar = () => {
+const NavBarComponent = () => {
   const { user } = useUserStore();
   return (
     <header>
@@ -38,4 +38,4 @@ const NavBar = () => {
   )
 }
 
-export default NavBar
+export default NavBarComponent
