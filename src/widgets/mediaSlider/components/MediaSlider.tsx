@@ -6,12 +6,14 @@ import 'swiper/css';
 import { Genre } from '@/shared/types';
 import { Track, TrackCard } from '@/entities/track';
 import SliderBtns from './SliderBtns';
+import { AlbumCard } from '@/entities/album';
 
 type Props = {
-    tracks?: Track[]
+    tracks?: Track[];
+    customGenres?: Genre[];
 }
 
-const MediaSlider = ({tracks}: Props) => {
+const MediaSlider = ({tracks, customGenres}: Props) => {
   return (
       <div className="relative">
         <Swiper
@@ -24,6 +26,12 @@ const MediaSlider = ({tracks}: Props) => {
                         key={track.id}
                         track={track} 
                     />
+                </SwiperSlide>
+            ))}
+
+            { customGenres && customGenres.map((genre) => (
+                <SwiperSlide className='!w-44 flex justify-center items-center first-of-type:ml-8 last-of-type:mr-8' key={genre.value}>
+                    <AlbumCard customAlbum={genre} />
                 </SwiperSlide>
             ))}
             <SliderBtns />
