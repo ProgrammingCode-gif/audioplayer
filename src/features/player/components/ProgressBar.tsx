@@ -1,9 +1,9 @@
 'use client'
 
 import { formatTime } from "@/shared/halpers/formatTime"
-import { Track } from "@/shared/types"
 import React, { memo, useCallback, useEffect, useMemo, useState } from "react";
 import Bar from "./Bar";
+import { Track } from "@/entities/track";
 
 type Props = {
     track: Track | null;

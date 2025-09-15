@@ -1,4 +1,4 @@
-import { Track } from  '../../shared/types'
+import { Track } from "@/entities/track"
 
 export type PlayerState = {
     track: Track | null,

@@ -1,4 +1,4 @@
-import { Artist } from '@/shared/types'
+import { Artist } from '@/entities/artist';
 import React, { memo, useMemo } from 'react'
 
 type Props = {

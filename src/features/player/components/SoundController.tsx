@@ -2,8 +2,8 @@
 import React, { memo } from 'react'
 import { BsFileMusicFill } from "react-icons/bs";
 import SoundBar from './SoundBar';
-import { Track } from '@/shared/types';
 import { useRightSideBarStore } from '@/widgets/rightSideBar';
+import { Track } from '@/entities/track';
 
 type Props = {
   audioRef: React.RefObject<HTMLAudioElement | null>;

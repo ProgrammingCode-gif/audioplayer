@@ -1,4 +1,4 @@
-import { Artist } from '@/shared/types';
+import { Artist } from '@/entities/artist';
 import { create } from 'zustand';
 
 type RightSideBarStore = {

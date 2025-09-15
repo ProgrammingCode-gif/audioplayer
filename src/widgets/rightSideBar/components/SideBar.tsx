@@ -1,7 +1,7 @@
 "use client"
 
 import { useAudioStore } from '@/features/player'
-import React, { memo, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import TrackInfo from './TrackInfo'
 import ArtistInfo from './ArtistInfo'
 import { fetchArtistIfo } from '../api/fetchArtistInfo'

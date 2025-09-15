@@ -1,4 +1,3 @@
-import { Track } from "@/shared/types";
 import { FaCirclePlay } from "react-icons/fa6";
 import { FaCirclePause } from "react-icons/fa6";
 import { BiSolidSkipNextCircle } from "react-icons/bi";

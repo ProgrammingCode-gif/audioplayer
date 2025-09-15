@@ -1,4 +1,4 @@
-import { Track } from '@/shared/types'
+import { Track } from '@/entities/track'
 import React, { memo } from 'react'
 
 type Props = {

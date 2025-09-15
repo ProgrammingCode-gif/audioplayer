@@ -1,6 +1,6 @@
 "use client"
 
-import { Track } from '@/shared/types'
+import { Track } from '@/entities/track';
 import { motion } from 'motion/react';
 import React, { memo, useEffect, useState } from 'react'
 import { TbArrowBarRight } from "react-icons/tb";

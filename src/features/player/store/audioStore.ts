@@ -1,6 +1,6 @@
 import {create} from 'zustand';
 import { PlayerState } from "../types"
-import { Track } from '@/shared/types';
+import { Track } from '@/entities/track';
 
 export const useAudioStore = create<PlayerState>((set) => ({
     track: null,
